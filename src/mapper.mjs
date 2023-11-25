@@ -1,22 +1,6 @@
-import { compareAsc, getDate, getHours } from 'date-fns'
+import { compareAsc, getDate } from 'date-fns'
 
-export const trimByCurrentHour = (data) => {
-  const today = new Date()
-  const hour = getHours(today)
-  const day = getDate(today)
-  
-  return data.reduce((trimmed, current) => {
-    if (current.day === day) {
-      const index = current.points.findIndex((point) => point.hour === hour)
-      const twoHoursBeforeIndex = index - 2
-      return [
-        ...trimmed,
-        ...current.points.slice(twoHoursBeforeIndex > 0 ? twoHoursBeforeIndex : 0)
-      ]
-    }
-    return [...trimmed, ...current.points]
-  }, [])
-}
+const flatten = (data) => data.reduce((flattened, current) => [...flattened, ...current.points], [])
 
 const mapPoint = (point) => ({
   hour: point.position - 1,
@@ -32,5 +16,5 @@ export const mapData = (data) => {
     day: getDate(new Date(period.timeInterval.start)),
     points: period.Point.map(mapPoint),
   }))
-  return trimByCurrentHour(points)
+  return flatten(points)
 }
