@@ -4,7 +4,11 @@ import { config } from 'dotenv'
 
 config()
 
+const frontendUrl = 'http://localhost:1234'
+
 const server = createServer((req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', frontendUrl)
+
   if (req.url === '/') {
     getPoints((result) => {
       if (result.isSuccess) {

@@ -11,13 +11,10 @@ export const trimByCurrentHour = (data) => {
       const twoHoursBeforeIndex = index - 2
       return [
         ...trimmed,
-        {
-          day: current.day,
-          points: current.points.slice(twoHoursBeforeIndex > 0 ? twoHoursBeforeIndex : 0)
-        }
+        ...current.points.slice(twoHoursBeforeIndex > 0 ? twoHoursBeforeIndex : 0)
       ]
     }
-    return [...trimmed, current]
+    return [...trimmed, ...current.points]
   }, [])
 }
 
