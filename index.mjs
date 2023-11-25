@@ -4,7 +4,8 @@ import { config } from 'dotenv'
 
 config()
 
-const frontendUrl = 'http://localhost:1234'
+const frontendUrl = 'https://glevanov.github.io'
+const port = process.env.PORT || 3000
 
 const server = createServer((req, res) => {
   res.setHeader('Access-Control-Allow-Origin', frontendUrl)
@@ -25,7 +26,7 @@ const server = createServer((req, res) => {
   }
 })
 
-server.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000')
+server.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`)
 })
 
