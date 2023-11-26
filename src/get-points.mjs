@@ -2,13 +2,14 @@ import { get } from 'node:https'
 import { XMLParser } from 'fast-xml-parser'
 import { addDays, format, startOfDay } from 'date-fns'
 import { mapData } from './mapper.mjs'
+import { config } from '../config.mjs'
 
 const domain = '10Y1001A1001A47J'
 const start = startOfDay(new Date())
 const end = addDays(start, 1)
 
 const getQuery = () => [
-  `securityToken=${process.env.ENTSOE_TOKEN}`,
+  `securityToken=${config.token}`,
   'documentType=A44',
   `in_Domain=${domain}`,
   `out_Domain=${domain}`,

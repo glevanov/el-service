@@ -1,14 +1,9 @@
 import { getPoints } from './src/get-points.mjs'
 import { createServer } from 'node:http'
-import { config } from 'dotenv'
-
-config()
-
-const frontendUrl = 'https://glevanov.github.io'
-const port = process.env.PORT || 3000
+import { config } from './config.mjs'
 
 const server = createServer((req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', frontendUrl)
+  res.setHeader('Access-Control-Allow-Origin', config.frontendUrl)
 
   if (req.url === '/') {
     getPoints((result) => {
@@ -26,7 +21,7 @@ const server = createServer((req, res) => {
   }
 })
 
-server.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`)
+server.listen(config.port, () => {
+  console.log(`Server is running on http://localhost:${config.port}`)
 })
 

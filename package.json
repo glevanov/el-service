@@ -3,7 +3,7 @@
   "description": "Service for fetching electricity data ",
   "main": "index.mjs",
   "scripts": {
-    "run": "node index.mjs"
+    "start": "node index.mjs"
   },
   "author": "Grigoriy Levanov",
   "license": "MIT",
