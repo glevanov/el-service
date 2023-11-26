@@ -4,7 +4,7 @@ dotenvConfig()
 
 export const config = {
   port: process.env.PORT || 3000,
-  frontendUrl: 'https://glevanov.github.io',
+  frontendUrl: process.env.FRONTEND_URL || '*',
   token: process.env.ENTSOE_TOKEN,
   endpoint: 'https://web-api.tp.entsoe.eu/api',
 }
