@@ -4,7 +4,10 @@
   "main": "index.mjs",
   "scripts": {
     "start": "node index.mjs",
-    "test": "uvu src test"
+    "test": "uvu src test",
+    "lint": "pnpm run lint:prettier && pnpm run lint:eslint",
+    "lint:prettier": "prettier . --write",
+    "lint:eslint": "eslint 'src/**/*.mjs'"
   },
   "author": "Grigoriy Levanov",
   "license": "MIT",
@@ -14,6 +17,9 @@
     "fast-xml-parser": "^4.3.2"
   },
   "devDependencies": {
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.1.0",
     "uvu": "^0.5.6"
   }
 }

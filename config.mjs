@@ -1,10 +1,10 @@
-import { config as dotenvConfig } from 'dotenv'
+import { config as dotenvConfig } from "dotenv";
 
-dotenvConfig()
+dotenvConfig();
 
 export const config = {
   port: process.env.PORT || 3000,
-  frontendUrl: process.env.FRONTEND_URL || '*',
+  frontendUrl: process.env.FRONTEND_URL || "*",
   token: process.env.ENTSOE_TOKEN,
-  endpoint: 'https://web-api.tp.entsoe.eu/api',
-}
+  endpoint: "https://web-api.tp.entsoe.eu/api",
+};
